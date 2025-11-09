@@ -53,16 +53,22 @@ export default function LoginPage() {
       {/* stronger translucent overlay to improve contrast */}
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
       <Card className="relative z-10 w-full max-w-md shadow-2xl bg-white/90 backdrop-blur-md">
-        <CardHeader className="space-y-1 text-center">
+        <CardHeader className="space-y-1 text-center relative">
           <div className="flex justify-center mb-4">
             <div className="bg-[#ff4d4d] text-white p-3 rounded-full">
               <Utensils size={32} />
             </div>
           </div>
-          <CardTitle className="text-3xl font-bold">MEC Eats</CardTitle>
-          <CardDescription className="text-base">
-            Good Food. Good Mood. Delivered in Yor Tung.
-          </CardDescription>
+          {/* Left vertical red bar and bold red title */}
+          <div className="flex items-center justify-center space-x-3">
+            <span className="inline-block w-1 h-10 bg-red-600 rounded-sm" aria-hidden="true" />
+            <div>
+              <CardTitle className="text-3xl font-extrabold text-red-600">MEC EAT</CardTitle>
+              <CardDescription className="text-base text-gray-700">
+                Good Food. Good Mood. Delivered in Yor Tung.
+              </CardDescription>
+            </div>
+          </div>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
