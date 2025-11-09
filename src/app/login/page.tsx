@@ -46,8 +46,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ff4d4d] to-[#ff7b7b] p-4">
-      <Card className="w-full max-w-md shadow-2xl">
+    <div
+      className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center relative"
+      style={{ backgroundImage: `url('/login-bg.svg')` }}
+    >
+      {/* stronger translucent overlay to improve contrast */}
+      <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
+      <Card className="relative z-10 w-full max-w-md shadow-2xl bg-white/90 backdrop-blur-md">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
             <div className="bg-[#ff4d4d] text-white p-3 rounded-full">
@@ -103,7 +108,7 @@ export default function LoginPage() {
           <CardFooter className="flex flex-col space-y-4">
             <Button
               type="submit"
-              className="w-full bg-[#ff4d4d] hover:bg-[#ff3333] text-white font-semibold"
+              className="w-full bg-[#ff6a00] hover:bg-[#ff8a2b] text-white font-semibold"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -117,12 +122,12 @@ export default function LoginPage() {
             </Button>
             <div className="text-sm text-center text-muted-foreground">
               Don't have an account?{" "}
-              <Link href="/signup" className="text-[#ff4d4d] hover:underline font-semibold">
+                <Link href="/signup" className="text-[#ff6a00] hover:underline font-semibold">
                 Sign Up
               </Link>
             </div>
             <div className="text-sm text-center text-muted-foreground">
-              <Link href="/admin/login" className="text-[#ff4d4d] hover:underline font-semibold">
+              <Link href="/admin/login" className="text-[#ff6a00] hover:underline font-semibold">
                 Admin Login
               </Link>
             </div>

@@ -1,0 +1,107 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice'>
+  <defs>
+    <linearGradient id='wall' x1='0' x2='1'>
+      <stop offset='0' stop-color='#ffb347'/>
+      <stop offset='1' stop-color='#ffcc33'/>
+    </linearGradient>
+    <linearGradient id='floor' x1='0' x2='1'>
+      <stop offset='0' stop-color='#c0c0c0'/>
+      <stop offset='1' stop-color='#9a9a9a'/>
+    </linearGradient>
+    <filter id='grain'>
+      <feTurbulence baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/>
+      <feColorMatrix type='saturate' values='0'/>
+      <feBlend mode='overlay'/>
+    </filter>
+  </defs>
+
+  <!-- background wall -->
+  <rect width='100%' height='100%' fill='url(#wall)' />
+
+  <!-- flame graphic on left -->
+  <g transform='translate(120,200) scale(1.6)'>
+    <path d='M40 140 C40 80 80 60 100 40 C120 20 120 -10 90 0 C60 10 30 60 40 140 Z' fill='#ff6a00' opacity='0.95'/>
+    <path d='M60 120 C60 80 85 65 95 50 C105 35 105 10 90 20 C75 30 60 70 60 120 Z' fill='#ffd24d' opacity='0.9'/>
+  </g>
+
+  <!-- service counter with circular yellow sign -->
+  <g transform='translate(260,480)'>
+    <rect x='0' y='0' width='1000' height='150' rx='8' fill='#222' opacity='0.85'/>
+    <rect x='20' y='-120' width='260' height='120' rx='8' fill='#fff3cc' opacity='0.9'/>
+    <circle cx='150' cy='-60' r='28' fill='#ffeb3b'/>
+    <text x='150' y='-54' text-anchor='middle' font-size='20' font-family='sans-serif' fill='#333'>Cafe</text>
+  </g>
+
+  <!-- industrial ceiling ducts and lights -->
+  <g stroke='#111' stroke-width='8' opacity='0.9'>
+    <rect x='0' y='40' width='1600' height='12' fill='#111' opacity='0.4' />
+    <rect x='0' y='80' width='1600' height='6' fill='#222' opacity='0.35' />
+    <g stroke='#000' stroke-width='6'>
+      <line x1='200' y1='40' x2='200' y2='220' stroke='#111' />
+      <line x1='470' y1='40' x2='470' y2='220' stroke='#111' />
+      <line x1='740' y1='40' x2='740' y2='220' stroke='#111' />
+      <line x1='1010' y1='40' x2='1010' y2='220' stroke='#111' />
+    </g>
+    <g stroke='#fff' stroke-width='6' opacity='0.9'>
+      <line x1='120' y1='120' x2='480' y2='120' stroke='#e6e6e6' />
+      <line x1='520' y1='120' x2='880' y2='120' stroke='#e6e6e6' />
+      <line x1='920' y1='120' x2='1280' y2='120' stroke='#e6e6e6' />
+    </g>
+  </g>
+
+  <!-- chairs with cut-out patterns (green, blue, purple) -->
+  <g transform='translate(320,540)'>
+    <g transform='translate(0,0)'>
+      <rect x='0' y='0' width='120' height='80' rx='10' fill='#2ecc71' />
+      <rect x='12' y='12' width='96' height='56' rx='6' fill='#1b8f4a' opacity='0.9' />
+      <g fill='#fff' opacity='0.25'>
+        <circle cx='30' cy='40' r='6' />
+        <circle cx='60' cy='40' r='6' />
+        <circle cx='90' cy='40' r='6' />
+      </g>
+    </g>
+
+    <g transform='translate(160,0)'>
+      <rect x='0' y='0' width='120' height='80' rx='10' fill='#4da6ff' />
+      <rect x='12' y='12' width='96' height='56' rx='6' fill='#1f7fbf' opacity='0.9' />
+      <g fill='#fff' opacity='0.25'>
+        <rect x='26' y='30' width='16' height='6' rx='3' />
+        <rect x='52' y='30' width='16' height='6' rx='3' />
+        <rect x='78' y='30' width='16' height='6' rx='3' />
+      </g>
+    </g>
+
+    <g transform='translate(320,0)'>
+      <rect x='0' y='0' width='120' height='80' rx='10' fill='#9b59b6' />
+      <rect x='12' y='12' width='96' height='56' rx='6' fill='#6f3f9a' opacity='0.9' />
+      <g fill='#fff' opacity='0.25'>
+        <path d='M28 36 q8 -12 16 0 q8 -12 16 0' stroke='#fff' stroke-width='4' fill='none' stroke-linecap='round' />
+      </g>
+    </g>
+  </g>
+
+  <!-- people silhouettes at counter -->
+  <g transform='translate(640,460) scale(0.9)'>
+    <g fill='#2b2b2b' opacity='0.9'>
+      <circle cx='20' cy='20' r='12' />
+      <rect x='8' y='32' width='24' height='36' rx='6' />
+    </g>
+    <g transform='translate(70,0)' fill='#2b2b2b' opacity='0.85'>
+      <circle cx='20' cy='20' r='12' />
+      <rect x='8' y='32' width='24' height='36' rx='6' />
+    </g>
+    <g transform='translate(140,0)' fill='#2b2b2b' opacity='0.85'>
+      <circle cx='20' cy='20' r='12' />
+      <rect x='8' y='32' width='24' height='36' rx='6' />
+    </g>
+  </g>
+
+  <!-- glossy dark tables -->
+  <g transform='translate(310,620)'>
+    <rect x='0' y='0' width='150' height='14' rx='6' fill='#111' opacity='0.9'/>
+    <rect x='170' y='0' width='150' height='14' rx='6' fill='#111' opacity='0.9'/>
+  </g>
+
+  <!-- slight vignette -->
+  <rect width='100%' height='100%' fill='black' opacity='0.06'/>
+</svg>
