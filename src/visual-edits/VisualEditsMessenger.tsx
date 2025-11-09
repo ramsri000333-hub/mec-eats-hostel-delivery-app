@@ -376,7 +376,13 @@ const getCurrentStyles = (
 const normalizeImageSrc = (input: string): string => {
   if (!input) return "";
   try {
-    const url = new URL(input, window.location.origin);
+    // Use a safe base origin: prefer window.location when in browser,
+    // otherwise fall back to NEXT_PUBLIC_SITE_URL or localhost to avoid
+    // server-side ReferenceError for `location`.
+    const base = typeof window !== "undefined"
+      ? window.location.origin
+      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost";
+    const url = new URL(input, base);
     // Handle Next.js <Image> optimization wrapper
     if (url.pathname === "/_next/image") {
       const real = url.searchParams.get("url");

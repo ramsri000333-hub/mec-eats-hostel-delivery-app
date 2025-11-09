@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
-
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -13,24 +11,24 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-    unoptimized: true, // This helps with Netlify deployment
+    unoptimized: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // This helps with deployment, but you should fix type errors in development
-  },
-  swcMinify: true,
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  turbopack: {
-    rules: {
-      "*.{jsx,tsx}": {
-        loaders: [LOADER]
-      }
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb'
     }
-  }
+  },
+  // Netlify specific optimizations
+  output: 'standalone',
+  poweredByHeader: false,
+  generateEtags: false,
+  compress: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
