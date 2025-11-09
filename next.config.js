@@ -1,9 +1,7 @@
-import type { NextConfig } from "next";
-import path from "node:path";
+/** @type {import('next').NextConfig} */
+const path = require('path');
 
-const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -15,9 +13,12 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true, // This helps with Netlify deployment
   },
-  outputFileTracingRoot: path.resolve(__dirname, '../../'),
   typescript: {
+    ignoreBuildErrors: true, // This helps with deployment, but you should fix type errors in development
+  },
+  swcMinify: true,
     ignoreBuildErrors: true,
   },
   eslint: {
