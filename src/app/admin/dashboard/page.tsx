@@ -1,23 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Package, Store, DollarSign, TrendingUp, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AdminSidebar from "@/components/AdminSidebar";
-import { useAuthStore } from "@/store/authStore";
+import { useSession } from "@/lib/auth-client";
 import { useOrderStore } from "@/store/orderStore";
 import { useAdminStore } from "@/store/adminStore";
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const { user, isAuthenticated } = useAuthStore();
+  const { data: session, isPending } = useSession();
   const orders = useOrderStore((state) => state.orders);
   const restaurants = useAdminStore((state) => state.restaurants);
 
-  if (!isAuthenticated || user?.role !== "admin") {
-    router.push("/admin/login");
-    return null;
-  }
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!isPending && !session?.user) {
+      router.push("/admin/login");
+    }
+  }, [session, isPending, router]);
 
   // Calculate stats
   const todayOrders = orders.filter(
@@ -79,6 +82,18 @@ export default function AdminDashboardPage() {
     );
   };
 
+  if (isPending) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
+        <div className="text-lg text-gray-600">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!session?.user) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-[#fafafa]">
       <AdminSidebar />
@@ -87,7 +102,7 @@ export default function AdminDashboardPage() {
         <div className="p-6 lg:p-8">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-            <p className="text-gray-600">Welcome back, {user?.name}!</p>
+            <p className="text-gray-600">Welcome back, {session.user.name}!</p>
           </div>
 
           {/* Stats Grid */}
